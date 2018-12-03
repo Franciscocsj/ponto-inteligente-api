@@ -23,13 +23,17 @@ import javax.persistence.Table;
 //O @Table define o nome da tabela no banco de dados para a entidade
 @Table(name="empresa")
 
+//A serialização significa salvar o estado atual dos objetos em arquivos em formato binário para o seu computador, 
+//sendo assim esse estado poderá ser recuperado posteriormente recriando o objeto em memória assim como ele estava 
+//no momento da sua serialização.
+
 public class Empresa implements Serializable{
 
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 4364780392884408833L;
 	private Long id;
 	private String razaoSocial;
 	private String cnpj;
