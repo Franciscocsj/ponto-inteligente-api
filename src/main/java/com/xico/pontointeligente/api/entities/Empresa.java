@@ -2,15 +2,20 @@ package com.xico.pontointeligente.api.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+
 
 //O annotation @Entity torna a classe empresa em uma entidade de BCO de dados.
 @Entity
@@ -30,6 +35,7 @@ public class Empresa implements Serializable{
 	private String cnpj;
 	private Date dataCriacao;
 	private Date dataAtualizacao;
+	private List<Funcionario> funcionarios;
 	
 	
 	public Empresa() {
@@ -83,7 +89,13 @@ public class Empresa implements Serializable{
 		this.dataAtualizacao=dataAtualizacao;
 	}
 	
-	//O annotation @PrePersist permite executar uma ação no objeto antes dele ser inserido
+	//Annotatio responsavél por especificar o relacionamento de um para muitos.
+	@OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public List<Funcionario> getFuncionarios(){
+		return funcionarios;
+	}
+	
+	//O annotation @PrePersist permite executar uma ação no objeto antes dele ser inserido.
 	@PrePersist
 	public void prePersist() {
 		final Date atual = new Date();
@@ -91,7 +103,7 @@ public class Empresa implements Serializable{
 		dataAtualizacao= atual;
 	}
 	
-	//O annotation @PreUpdate permite executar uma ação no objeto antes do update ser realizado
+	//O annotation @PreUpdate permite executar uma ação no objeto antes do update ser realizado.
 	@PreUpdate
 	public void preUpdate() {
 		dataAtualizacao = new Date();
@@ -100,7 +112,7 @@ public class Empresa implements Serializable{
 	//O annotation @Override permite reescrever o método que foi herdado, onde o comportamento da classe pai é diferente do seu comportamento na classe filha
 	//Exemplo o metodo to String abaixo que faz parte da classe object se ele não for reescrito terá o comportamento da classe object, se for reescrito terá
 	//o comportamento da classe filha nesse caso a classe empresa.
-	//A sobrescrita de um método  ocorre quando uma classe filha implementa um método que já existe numa classe mãe, alterando o comportamento existente
+	//A sobrescrita de um método  ocorre quando uma classe filha implementa um método que já existe numa classe mãe, alterando o comportamento existente.
 	@Override
 	public String toString(){
 		return "Empresa[id="+id+", "
