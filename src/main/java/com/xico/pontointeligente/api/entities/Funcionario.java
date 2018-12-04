@@ -27,9 +27,7 @@ import com.xico.pontointeligente.api.enums.PerfilEnum;
 @Table(name = "funcionario")
 public class Funcionario implements Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	
@@ -59,7 +57,7 @@ public class Funcionario implements Serializable{
 		return id;
 	}
 	
-	public void setId(Long Id) {
+	public void setId(Long id) {
 		this.id=id;
 	}
 	

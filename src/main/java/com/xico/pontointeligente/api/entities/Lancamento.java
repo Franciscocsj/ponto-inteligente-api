@@ -104,7 +104,7 @@ public class Lancamento implements Serializable {
 		return tipo;
 	}
 	
-	public void setTipo (TipoEnum tip) {
+	public void setTipo (TipoEnum tipo) {
 		this.tipo=tipo;
 	}
 	
@@ -113,7 +113,7 @@ public class Lancamento implements Serializable {
 		return funcionario;
 	}
 	
-	public void setFuncionario(Funcionario feuncionario) {
+	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
 	

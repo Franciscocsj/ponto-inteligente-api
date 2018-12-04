@@ -52,7 +52,7 @@ public class Empresa implements Serializable{
 		return id;
 	}
 	
-	public void setId(Long Id) {
+	public void setId(Long id) {
 		this.id=id;
 	}
 
